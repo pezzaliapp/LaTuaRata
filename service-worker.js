@@ -1,6 +1,6 @@
 /* service-worker.js — LaTuaRata */
 /* CACHE_NAME univoco: cambiarlo a ogni rilascio forza l'aggiornamento. */
-const CACHE_NAME = "latuarata_v2026_06_22";
+const CACHE_NAME = "latuarata_v2026_06_22_2";
 
 /* Solo file realmente presenti su disco: cache.addAll è atomico,
    un singolo 404 romperebbe l'installazione offline.
@@ -11,8 +11,11 @@ const ASSETS = [
   "./style.css",
   "./app.js",
   "./manifest.json",
-  "./icons/icons_crm-192x192.png",
-  "./icons/icons_crm-512x512.png",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/icon-512-maskable.png",
+  "./icons/apple-touch-icon.png",
+  "./icons/favicon.png",
   "./data/Domanda_NOLEGGIO.pdf",
   "./data/Modulo_firma_digitale.pdf",
   "./data/Privacy_-_Attestazione_avvenuta_consegna.pdf",

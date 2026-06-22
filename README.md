@@ -141,8 +141,11 @@ node test/dom.js            # wiring selettore/pulsante senza browser
 ├── service-worker.js
 ├── manifest.json
 ├── icons/
-│   ├── icons_crm-192x192.png
-│   └── icons_crm-512x512.png
+│   ├── icon-192.png
+│   ├── icon-512.png
+│   ├── icon-512-maskable.png
+│   ├── apple-touch-icon.png
+│   └── favicon.png
 ├── data/
 │   ├── Domanda_NOLEGGIO.pdf
 │   ├── Modulo_firma_digitale.pdf
@@ -152,7 +155,18 @@ node test/dom.js            # wiring selettore/pulsante senza browser
 │   ├── regression.js
 │   └── dom.js
 └── scripts/
-    └── bump-cache.js
+    ├── bump-cache.js
+    └── gen-icons.py        # rigenera le icone (Pillow, nessun font/CDN esterno)
+```
+
+### Icone
+
+Le icone (€ centrale racchiuso da una doppia freccia circolare = conversione bidirezionale
+imponibile ⇄ rata, su gradiente indaco→ciano) sono **distinte** da quelle dell'app originale
+per evitare confusione sulla home dello smartphone. Si rigenerano con:
+
+```bash
+python3 scripts/gen-icons.py
 ```
 
 ---
