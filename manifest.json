@@ -1,0 +1,26 @@
+{
+  "name": "LaTuaRata — Calcolo Noleggio",
+  "short_name": "LaTuaRata",
+  "description": "PWA per calcolare i canoni di noleggio: dall'imponibile alla rata e dalla rata all'imponibile (calcolo inverso).",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "scope": "./",
+  "orientation": "portrait",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "icons/icons_crm-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icons_crm-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

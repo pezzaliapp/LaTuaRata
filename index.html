@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#007bff">
+
+  <!-- PWA / iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LaTuaRata">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" sizes="192x192" href="icons/icons_crm-192x192.png">
+  <link rel="icon" sizes="512x512" href="icons/icons_crm-512x512.png">
+  <link rel="apple-touch-icon" href="icons/icons_crm-192x192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>LaTuaRata — Calcolo Noleggio</title>
+</head>
+
+<body>
+
+  <!-- Banner aggiornamento automatico -->
+  <div id="updateBanner" style="display:none;">
+    <span id="updateBannerText"></span>
+    <button id="updateBannerBtn" type="button">Ricarica ora</button>
+  </div>
+
+  <header>
+    <h1>LaTuaRata</h1>
+    <button id="darkModeToggle" type="button">🌙 Modalità Scura</button>
+  </header>
+
+  <main>
+    <div class="noleggio-container">
+      <h2>Simulatore Calcolo Canoni Locazione</h2>
+
+      <div class="input-group">
+        <label for="direzione">Cosa vuoi calcolare?</label>
+        <select id="direzione">
+          <option value="imponibile" selected>Ho l'imponibile → calcola la RATA</option>
+          <option value="rata">Ho la RATA → calcola l'IMPONIBILE</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="importo" id="labelImporto">Inserisci imponibile:</label>
+        <input
+          type="text"
+          id="importo"
+          placeholder="Inserisci imponibile"
+          autocomplete="off"
+          inputmode="decimal"
+          pattern="[0-9.,]*"
+          enterkeyhint="done"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="durata">Durata:</label>
+        <select id="durata">
+          <option value="12">12 mesi</option>
+          <option value="18">18 mesi</option>
+          <option value="24" selected>24 mesi</option>
+          <option value="36">36 mesi</option>
+          <option value="48">48 mesi</option>
+          <option value="60">60 mesi</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="modalita">Modalità canone:</label>
+        <select id="modalita">
+          <option value="mensile" selected>Mensile</option>
+          <option value="trimestrale">Trimestrale</option>
+        </select>
+      </div>
+
+      <button class="button" type="button" onclick="calcola()">Calcola</button>
+
+      <div class="results">
+        <p id="imponibileRow" style="display:none;">
+          Imponibile calcolato: <b><span id="imponibileCalcolato">0,00 €</span></b>
+          <span id="stimaBadge" class="stima-badge"></span>
+        </p>
+        <p><span id="labelRata">Rata mensile:</span> <span id="rataMensile">0,00 €</span></p>
+        <p>Spese di contratto: <span id="speseContratto">0,00 €</span></p>
+        <p>Costo giornaliero: <span id="costoGiornaliero">0,00 €</span></p>
+        <p>Costo orario: <span id="costoOrario">0,00 €</span></p>
+      </div>
+
+      <!-- Bottone per la generazione del TXT -->
+      <button class="button print-button" type="button" onclick="generaTXT()">
+        Scarica preventivo TXT
+      </button>
+
+      <!-- Sezione Download Documenti BCC -->
+      <div class="pdf-section">
+        <h3>📄 Documenti BCC Rent&amp;Lease</h3>
+        <p class="pdf-note">Scarica i moduli necessari per la pratica di noleggio operativo:</p>
+        <div class="pdf-links">
+          <a class="pdf-btn" href="data/Domanda_NOLEGGIO.pdf" download="Domanda_NOLEGGIO.pdf">
+            📋 Domanda di Noleggio
+          </a>
+          <a class="pdf-btn" href="data/Modulo_firma_digitale.pdf" download="Modulo_firma_digitale.pdf">
+            ✍️ Modulo Firma Digitale
+          </a>
+          <a class="pdf-btn" href="data/Privacy_-_Attestazione_avvenuta_consegna.pdf" download="Privacy_-_Attestazione_avvenuta_consegna.pdf">
+            🔒 Privacy – Attestazione Consegna
+          </a>
+          <a class="pdf-btn" href="data/Scheda_prodotto_NOLEGGIO.pdf" download="Scheda_prodotto_NOLEGGIO.pdf">
+            📑 Scheda Prodotto Noleggio
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+  <p>
+    &copy; Copyright (c) 2025 Alessandro Pezzali
+    <span class="app-release">LaTuaRata · Aprile 2026</span>
+  </p>
+</footer>
+
+  <!-- Logica dell'app -->
+  <script src="app.js"></script>
+</body>
+</html>
