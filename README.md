@@ -83,6 +83,23 @@ toccare coefficienti, fasce o formule di calcolo**:
   include `libs/jspdf.umd.min.js` (file inesistente nell'originale): poiché `cache.addAll` è
   **atomico**, un singolo 404 avrebbe rotto l'installazione offline.
 
+### Promemoria rilascio: bump del CACHE_NAME
+
+A ogni rilascio cambia il `CACHE_NAME` per forzare l'aggiornamento sui dispositivi che hanno
+già installato la PWA. C'è uno script che lo fa in automatico con la data odierna:
+
+```bash
+node scripts/bump-cache.js --check   # mostra il CACHE_NAME attuale
+node scripts/bump-cache.js           # imposta latuarata_v<AAAA_MM_GG> (con suffisso _2,_3 se ripetuto in giornata)
+```
+
+Poi:
+```bash
+git add service-worker.js
+git commit -m "release: bump CACHE_NAME"
+git push origin main
+```
+
 ### Test in locale (evitare la cache "incollata")
 
 In sviluppo un vecchio service worker può servire file obsoleti dalla cache (HTML nuovo ma
@@ -131,9 +148,11 @@ node test/dom.js            # wiring selettore/pulsante senza browser
 │   ├── Modulo_firma_digitale.pdf
 │   ├── Privacy_-_Attestazione_avvenuta_consegna.pdf
 │   └── Scheda_prodotto_NOLEGGIO.pdf
-└── test/
-    ├── regression.js
-    └── dom.js
+├── test/
+│   ├── regression.js
+│   └── dom.js
+└── scripts/
+    └── bump-cache.js
 ```
 
 ---
